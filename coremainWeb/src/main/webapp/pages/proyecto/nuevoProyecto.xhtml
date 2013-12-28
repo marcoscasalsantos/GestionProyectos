@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>	
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags">
+	
+	<ui:composition template="/WEB-INF/facelets/templates/layout.xhtml">
+	
+	  <ui:define name="content">
+	
+	 
+	     <p:panel header="Crear un nuevo proyecto">   
+	         
+	       
+	         
+	            <h:panelGrid id="proyectoPanel" columns="2" cellpadding="10">
+	            	          
+	               <p:outputLabel for="codigo" value="Código:(Obligatorio) " />
+				   <p:focus>
+				      <p:inputText id="codigo" value="#{projectBean.selectedProject.codigoProyecto}" />
+				   </p:focus>
+	         
+	               <p:outputLabel for="nombre" value="Nombre:(Obligatorio)" />
+				   <p:inputTextarea id="nombre" value="#{projectBean.selectedProject.nombreProyecto}" rows="3" cols="20"/>
+				   
+				   <h:outputLabel for="descripcion" value="Descripcion:" />
+				   <p:inputTextarea id="descripcion" value="#{projectBean.selectedProject.descripcionProyecto}" 
+				                    rows="8" cols="35"/>
+				   
+				   <h:outputLabel for="presupuesto" value="Presupuesto:" />
+				   <p:inputText id="presupuesto" value="#{projectBean.selectedProject.presupuesto}" />
+				   
+				   <h:outputLabel for="fechaInicio" value="Fecha Inicio:" />
+				   <p:calendar value="#{projectBean.selectedProject.fechaInicioProyecto}" id="fechaInicio" showButtonPanel="true"/>  
+				   
+				   <h:outputLabel for="fechaFin" value="Fecha Fin:" />
+				   <p:calendar value="#{projectBean.selectedProject.fechaFinProyecto}" id="fechaFin" showButtonPanel="true"/>  
+				   	               
+	             </h:panelGrid> 
+	               
+	               <p:messages id="messages"/>
+	                     
+	   </p:panel>       
+	          
+	     
+	     <p:commandButton value="Guardar" actionListener="#{projectBean.insertProject}" 
+	                      update=":menuPrincipalForm:menu,messages" action="detalleProyecto"/>
+	                     <!--   render=":menuPrincipalForm:proyectos_id"/>-->
+	     
+	
+	   
+	  </ui:define>
+
+	</ui:composition>
+
+</html>

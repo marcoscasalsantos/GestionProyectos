@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>	
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags">
+	
+    <ui:composition template="/WEB-INF/facelets/templates/layout.xhtml">
+
+     <ui:define name="content">
+
+        <p:fieldset legend="Estado actual del proyecto" style="width:940px">
+  
+             <h:panelGrid columns="2">
+                   <h:panelGrid id="resumenDataPanel" columns="2" cellpadding="4">
+                      <h:panelGroup>
+                           <h:outputLabel for="fechaInicio" value="FECHA INICIO: " style="font-family: Verdana;font-weight: bold"/>
+                           <h:outputText id="fechaInicio" value="#{actualProjectBean.proyectoActual.fechaInicioProyecto}"
+                                         style="color: black">
+                               <f:convertDateTime pattern="dd/MM/yyyy" timeZone="#{localeBean.timeZone}"/>
+                           </h:outputText>
+                           
+                           &#160;
+                           
+                           <h:outputLabel for="fechaFin" value="FECHA FIN: " style="font-family: Verdana;font-weight: bold"/>
+                           <h:outputText id="fechaFin" value="#{actualProjectBean.proyectoActual.fechaFinProyecto}"
+                                         style="color: black">
+                               <f:convertDateTime pattern="dd/MM/yyyy" timeZone="#{localeBean.timeZone}"/>
+                           </h:outputText>
+                           
+                           &#160;
+                           
+                           <h:outputLabel for="fechaActual" value="FECHA ACTUAL: " style="font-family: Verdana;font-weight: bold"/>
+                           <h:outputText id="fechaActual" value="#{projectBean.fechaActual}" style="color: black">                                         
+                               <f:convertDateTime pattern="dd/MM/yyyy" timeZone="#{localeBean.timeZone}"/>
+                           </h:outputText>
+                       </h:panelGroup> 
+
+                       <br/>
+                         
+                     <h:panelGrid columns="2" cellpading = "4">
+                       <h:outputLabel for="presupuesto" value="PRESUPUESTO: " style="font-family: Verdana;font-weight: bold"/>
+                       <h:outputText id="presupuesto" value="#{actualProjectBean.proyectoActual.presupuesto}" style="color: green;font-family: Verdana;font-weight: bold"/>
+                                                       
+                       <h:outputLabel for="nTrabajadores" value="NÚMERO PARTICIPANTES: " style="font-family: Verdana;font-weight: bold"/>
+                       <h:outputText id="nTrabajadores" value="#{projectBean.numeroParticipantes}" style="color: black;font-family: Verdana"/>
+                       
+                       <h:outputLabel for="salariosTotales" value="SALARIOS TOTALES: " style="font-family: Verdana;font-weight: bold"/>
+                       <h:outputText id="salariosTotales" value="#{projectBean.salariosTotales}" style="color: red;font-family: Verdana"/>
+                       
+                       <h:outputLabel for="salariosPagados" value="SALARIOS CONSUMIDOS: " style="font-family: Verdana;font-weight: bold"/>
+                       <h:outputText id="salariosPagados" value="#{projectBean.salariosConsumidos}" style="font-family: Verdana;color: red;font-weight: bold"/>
+                       
+                     </h:panelGrid>
+                       
+                   </h:panelGrid>
+                   
+                   <h:panelGrid columns="2">
+                       <h:outputLabel for="tareasTotales" value="NÚMERO TAREAS: " style="font-family: Verdana;font-weight: bold"/>
+                       <h:outputText id="tareasTotales" value="#{projectBean.tareasTotales}" style="color: black;font-family: Verdana"/>
+                   
+                       <h:outputText for="sinAsignar" value="Sin asignar: " style="font-family: Verdana"/>
+                       <h:outputText id="sinAsignar" value="#{projectBean.tareasSinAsignar}" style="color: black;font-family: Verdana"/>
+                       
+                       <h:outputText for="asignadas" value="Asignadas: " style="font-family: Verdana"/>
+                       <h:outputText id="asignadas" value="#{projectBean.tareasAsignadas}" style="color: black;font-family: Verdana"/>
+                       
+                       <h:outputText for="enCurso" value="En curso: " style="font-family: Verdana"/>
+                       <h:outputText id="enCurso" value="#{projectBean.tareasEnCurso}" style="color: black;font-family: Verdana"/>
+                       
+                       <h:outputText for="finalizadas" value="Finalizadas: " style="font-family: Verdana"/>
+                       <h:outputText id="finalizadas" value="#{projectBean.tareasFinalizadas}" style="color: black;font-family: Verdana"/>
+                   </h:panelGrid>
+                   
+             </h:panelGrid>
+             
+             
+             <h:panelGrid id="graficoDataPanel" columns="2" cellpadding="4">
+                   
+                   <p:lineChart value="#{projectBean.evolucionSalarios}" legendPosition="e" 
+                                title="Seguimiento del presupuesto y economia del proyecto" style="height:300px"
+                                xaxisLabel="Dia/Mes" yaxisLabel="Presupuesto/Salarios" />
+             </h:panelGrid>
+ 
+        </p:fieldset>
+
+     </ui:define>
+
+   </ui:composition>
+
+</html>

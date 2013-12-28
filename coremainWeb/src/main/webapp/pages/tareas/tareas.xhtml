@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>	
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"	
+	xmlns:sec="http://www.springframework.org/security/facelets/tags">
+	
+	<ui:composition template="/WEB-INF/facelets/templates/layout.xhtml"> 
+	
+	   <ui:define name="content">
+	   
+	   
+	    
+	   
+	   <p:accordionPanel value="#{tareaBean.tareas}" var="tarea" multiple="true" id="tareas" 
+	                     activeIndex="#{loginBean.index}">
+	   
+	        <p:ajax event="tabChange" listener="#{tareaBean.onTabChange}" />
+	     
+	        <p:tab title="#{tarea.nombreTarea}" style="font-size:16px;"> 
+	       
+	        <h:panelGroup>
+	           
+	         <!-- collapsed="true" para que el panel este cerrado por defecto -->  
+	         <p:panel header="Usuarios asignados" toggleable="true" id="usuarios">  
+	         
+	             <p:tabView var="user" value="#{tarea.users}" id="userTarea" dynamic="true" cache="true">
+	            
+	                  <p:ajax event="tabClose" listener="#{tareaBean.onTabClose}" update="userTarea"
+	                                process="@this" render="userTarea"/> 
+	             
+	                  <p:tab id="user" title="#{user.fullName}" closable="true">
+	                  
+	                      <p:panelGrid columns="2" cellpadding="20">
+	                          
+	                          <h:outputText value="Nombre de usuario:"/>
+	                          <h:outputText value="#{user.username}" style="font-weight: bold"/>
+	                          
+	                          <h:outputText value="Email:"/>
+	                          <h:outputText value="#{user.email}" style="font-weight: bold"/>
+	                             
+	                          <p:commandLink>
+                                   <h:outputText value="Ficha"/>
+                              </p:commandLink> 
+	                          
+	                          <p:commandButton value="Horas" title="Añadir horas trabajadas" icon="ui-icon-plus"/>
+	                   
+	                       </p:panelGrid>         
+	                          
+	                  </p:tab>
+	              
+	            </p:tabView>
+	            
+	         
+	              
+	             <!--  <p:dataGrid var="user" value="#{tarea.users}" columns="1" id="usuariosAsignadosTarea"> 
+                    <p:column> 
+                         
+                        <h:panelGrid columns="2" style="width:100%;" cellpading="10">
+                            
+                            <p:commandLink id="usuarioTarea">
+                                   <h:outputText value="#{user.fullName}"></h:outputText>
+                            </p:commandLink>
+                            
+                            <p:column style="text-align:right;align:right;">
+                               <p:splitButton value="Borrar" actionListener="#{tareaBean.desasignarUsuario}" 
+                                              icon="ui-icon-close"  update="usuariosAsignadosTarea" 
+                                              style="float: rigth; "/>
+                            </p:column>                  
+                        </h:panelGrid>  
+                      
+                     </p:column>      
+                 </p:dataGrid>  -->
+                 
+           </p:panel>
+           
+           
+	            <!-- Problema al renderizar selectOneMenu dentro de contenedor que se expande, es cosa del 
+	            ancho, por eso se pone style y panelStyle,para que se precarge incluso cuando el contenedor
+	            está sin abrirse, asi cuando se abre el select tiene el ancho correcto dentro de su
+	            contenedor -->
+	            <p:panel header="Detalles tarea" toggleable="true" id="detallesTarea">
+	            
+	            <h:panelGrid columns="4" cellpading="4">
+	              
+	               
+	                  <h:outputLabel for="estado" value="Estado:"/> 
+                      <p:selectOneMenu id="estado" value="#{tarea.estado}" style="width: 150px; float: rigth;" panelStyle="width: 150px">    
+                             <f:selectItems value="#{tareaBean.estados}"/> 
+                      </p:selectOneMenu>
+                      
+                      
+                      
+                      <h:outputLabel for="asignar" value="Asignar a:  "/>
+                      <p:selectOneMenu id="asignar" value="#{tareaBean.nuevoUsuarioAsignadoATarea}" style="width: 200px" 
+                                       panelStyle="width: 200px" converter="userSelectOneMenuConverter"> 
+                             <f:selectItem itemLabel="Seleccione usuario" noSelectionOption="true" value="#{null}"/>                  
+                             <f:selectItems value="#{actualProjectBean.proyectoActual.users}" var="user"
+                                    itemLabel="#{user.fullName}" itemValue="#{user}"/>
+                             <p:ajax listener="#{tareaBean.asignarUsuarioATarea}"
+                                     event="change" update="tareas#{tareas.activeIndex}" process="@this" render="tareas#{tareas.activeIndex}"
+                                     oncomplete="accordionPanelWidget.select(2)"/>
+                                     
+                                     
+                                     <!-- update=":#{component.namingContainer.parent.namingContainer.clientId}:contenidoCentro:usuariosAsignadosTarea"/>
+                                     update=":#{p:component('usuariosAsignadosTarea')}" process=":#{p:component('usuariosAsignadosTarea')}"/>  -->      
+                      
+                                    
+                      </p:selectOneMenu> 
+                    
+                   
+                  
+                  
+                   
+                       <h:outputLabel for="fechaInicioTarea" value="Fecha de Inicio: "/> 
+                       <p:calendar id="fechaInicioTarea" value="#{tarea.fechaInicioTarea}" 
+                                        showButtonPanel="true"/>
+                   
+                   
+                   
+                        <h:outputLabel for="fechaFinTarea" value="Fecha de Fin: "/> 
+                        <p:calendar id="fechaFinTarea" value="#{tarea.fechaFinTarea}" 
+                                       showButtonPanel="true"/>
+                                    
+                      
+	           </h:panelGrid>  
+	           
+	                <p:panel header="Descripción tarea" toggleable="true" collapsed="true">
+                        
+                        <h:panelGrid columns="2" cellpadding="10">
+                           
+                            <h:outputLabel for="descripcion" value="Descripcion:"/>
+                            <h:outputText id="descripcion" value="#{tarea.descripcionTarea}"/> 
+                                             
+            
+                        </h:panelGrid>
+                        
+                     </p:panel>
+	           
+	                
+	                <p:commandButton value="Modificar tarea" actionListener="#{tareaBean.updateTarea}" update="messages"/>
+	                
+	           
+	          </p:panel>
+	           
+	        </h:panelGroup>
+	           
+	      </p:tab>
+	      
+	         <p:messages id="messages"/>
+	   
+	   </p:accordionPanel>     
+	   
+	      
+	     
+
+       </ui:define>
+
+   </ui:composition>
+
+</html>

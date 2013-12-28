@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>	
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"	
+	xmlns:sec="http://www.springframework.org/security/facelets/tags">
+	
+	<ui:composition>
+	  <h:form id="menuPrincipalForm">  
+	
+			    <p:accordionPanel autoHeight="false" activeIndex="#{loginBean.tabIndex}" collapsible="true"> 
+			       
+			       <p:tab id="menuProyecto" title="Proyectos" style="ui-widget">
+			          <h:panelGrid cellpadding="5">			       
+			             <!--<f:ajax render=":contenidoCentro">-->
+			                <p:commandButton value="Nuevo" icon="ui-icon-plus" action="#{projectBean.goNewProject}" style="float:left"
+			                                 update=":contenidoCentro" rendered="#{true}"/> 
+			                <p:commandButton value="Listado" icon="ui-icon-plus" action="#{projectBean.goListaProyectos}" style="float:left"
+			                                 update=":contenidoCentro"/>			                                 			             
+			                <p:commandButton value="Participantes" icon="ui-icon-plus" action="#{projectBean.goEquipoProyecto}"
+			                                 style="float:left" update=":contenidoCentro"
+			                                 rendered="#{actualProjectBean.hayUnProyectoSeleccionado}"/>
+			                <p:commandButton id="btSalir" value="Salir" icon="ui-icon-plus" action="#{actualProjectBean.goSalirProyecto}"
+			                                 style="float:left" update=":contenidoCentro,:cabeceraForm:texto,:menuPrincipalForm" 
+			                                 rendered="#{actualProjectBean.hayUnProyectoSeleccionado}">
+			                                 <f:ajax render=":cabeceraForm:texto :menuPrincipalForm"/> 
+			                </p:commandButton>                 	                              			                        	                     		                   
+			            <!-- </f:ajax>      --> 			                               			                     			                			        
+                     </h:panelGrid>
+			       </p:tab> 
+			       
+			       <p:tab title="Tareas" style="ui-widget" rendered="#{actualProjectBean.hayUnProyectoSeleccionado}">
+			          <h:panelGrid cellpadding="5"> 		
+			             <p:commandButton value="Listado" icon="ui-icon-plus" action="#{tareaBean.goListaTareas}" style="float:left"/>
+			             <p:commandButton value="Nueva Tarea" icon="ui-icon-plus" action="#{tareaBean.goNuevaTarea}" style="float:left" />
+			             <p:commandButton value="Imputar horas" icon="ui-icon-plus" action="#{tareaBean.goImputarHoras}" style="float:left" />
+			          </h:panelGrid>
+			       </p:tab>
+			       
+			       <p:tab title="Usuarios" style="ui-widget">
+			         <h:panelGrid cellpadding="5">
+			           <f:ajax render=":contenidoCentro">	           
+			             <p:commandButton value="Listado" icon="ui-icon-plus" action="listaUsuarios" style="float:left"/>
+			             <p:commandButton value="Nuevo Usuario" icon="ui-icon-plus" action="newUser" style="float:left"/>		            
+			           </f:ajax>	
+			         </h:panelGrid>
+			       </p:tab> 
+			       
+			       <p:tab title="Estado de proyecto" style="ui-widget">
+			           <h:panelGrid cellpadding="5">
+			              <f:ajax render=":contenidoCentro">		           
+			                 <p:commandButton value="Seguimiento" icon="ui-icon-plus" action="seguimiento" style="float:left"/>
+			           </f:ajax> 
+			           </h:panelGrid>
+			       </p:tab>
+			       
+			       
+			       <!-- Nuevo Menu -->
+			    
+			    <!--   <p:tab title="PROYECTOS" style="ui-widget">
+			         
+			         <h:panelGrid cellpadding="5">
+			             <p:commandButton value="+NUEVO"></p:commandButton>
+			         </h:panelGrid>
+			         
+			         <br/> 
+			         
+			         <p:panelMenu model="#{menuBean.model}" selectionMode="single"/>  -->
+			       
+			       
+			      <!-- <p:panelMenu>
+			       
+			            <ui:repeat value="#{menuBean.projects}" var="proyecto">
+			            
+			               <p:submenu label="#{proyecto.nombreProyecto}"> 
+			                 <p:menuitem value="Tareas"></p:menuitem>
+			                 <p:menuitem value="Notas"></p:menuitem>
+			                 <p:menuitem value="Conversaciones"></p:menuitem>
+			                 <p:menuitem value="Gente y permisos"></p:menuitem>
+			                 <p:menuitem value="Configuracion"></p:menuitem>
+			                 <p:menuitem value="Centro de control"></p:menuitem>
+			               </p:submenu>  
+			            
+			            
+                        </ui:repeat>
+			             
+			               
+			       
+			      
+			       </p:panelMenu> -->
+			             
+			             <!-- Habria que crear una funcion que cargase todos los nombres de los proyectos para el menu -->
+			             <!--  <p:submenu label="Nombre del proyecto">
+			             
+			                 <p:menuitem value="Tareas"></p:menuitem>
+			                 <p:menuitem value="Notas"></p:menuitem>
+			                 <p:menuitem value="Conversaciones"></p:menuitem>
+			                 <p:menuitem value="Gente y permisos"></p:menuitem>
+			                 <p:menuitem value="Configuracion"></p:menuitem>
+			                 <p:menuitem value="Centro de control"></p:menuitem>
+			             
+			             </p:submenu>  -->
+			    
+			      <!--   </p:panelMenu>  -->
+			        
+			    <!--   </p:tab>-->
+			       
+			    </p:accordionPanel>
+			    
+			  
+			  
+			  
+			   
+			  
+			   <p:panelMenu id="menu" model="#{menuBean.model}" selectionMode="single"/> 
+			 
+			 
+			    
+			   
+			    <p:breadCrumb preview="true" expandEffectDuration="200" previewWidth="24">
+			         <p:menuitem value="1" url="#"></p:menuitem>
+			         <p:menuitem value="2" url="#"></p:menuitem>
+			         <p:menuitem value="3" url="#"></p:menuitem>
+			         <p:menuitem value="4" url="#"></p:menuitem>
+			      
+			    </p:breadCrumb>  
+			    
+			    
+			    <p:tree value="#{treeBean.root}" var="node" id="tree">  
+                   <p:treeNode id="treeNode">  
+                       <h:outputText value="#{node}" id="lblNode"/>  
+                   </p:treeNode>  
+                </p:tree> 
+			    
+	 
+ 	 </h:form>  
+	 </ui:composition>
+	 
+</html>

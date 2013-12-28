@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>	
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags">
+	
+	<ui:composition template="/WEB-INF/facelets/templates/layout.xhtml">
+		<ui:define name="content">
+						
+		<!--  	<h:form id="newUserForm">  -->
+										
+				<p:fieldset legend="Nuevo Usuario" style="width:940px">
+					<h:panelGrid columns="2">
+						<h:panelGrid id="userDataPanel" columns="2" cellpadding="4">
+	        							           				            				                        				            								            				            
+				            <h:outputLabel for="name" value="Nombre: *" />
+				            <p:focus>
+				               <p:inputText id="name" value="#{userBean.selectedUser.name}" />
+				            </p:focus>
+				            
+				            <h:outputLabel for="surnames" value="Apellidos: *" />
+				            <p:inputText id="surnames" value="#{userBean.selectedUser.surnames}" />			            				            			            
+				
+				            <h:outputLabel for="birthDate" value="Fecha de nacimiento: *" />
+				            <p:inputMask id="birthDate" value="#{userBean.selectedUser.birthDate}" mask="99/99/9999" >
+				            	<f:convertDateTime pattern="dd/MM/yyyy" timeZone="#{localeBean.timeZone}"/>
+				            </p:inputMask>
+				
+				            <h:outputText value="NIF: *" />
+				            <p:inputMask value="#{userBean.selectedUser.nif}" mask="99999999a" />
+				            
+				            <h:outputText value="Email:"></h:outputText>
+				            <p:inputText id="email" value="#{userBean.selectedUser.email}"></p:inputText>
+				            
+				            <h:outputText value="Salario:"></h:outputText>
+				            <p:inputText id="salario" value="#{userBean.selectedUser.salary}"/>
+				            			          
+			           	</h:panelGrid>
+	    			    			
+    				</h:panelGrid>
+    				    	
+    				<f:ajax render=":contenidoCentro">			
+    				<p:commandButton value="Guardar" actionListener="#{userBean.insertUser}" 
+    				                 update="messages,:contenidoCentro"/>
+    				</f:ajax>
+    				
+    				<f:verbatim></f:verbatim>
+    				
+    				<p:messages id="messages"/>
+    				
+    			</p:fieldset>
+				
+				<br/>
+		            	
+				<p:commandButton value="Volver" action="usuarios" ajax="false" immediate="true"/>
+   			    			
+	<!--		</h:form>	-->	
+			
+		</ui:define>
+	</ui:composition>
+</html>

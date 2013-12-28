@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:composition template="/WEB-INF/facelets/templates/defaultLayout.xhtml">
+		<ui:define name="content">
+			<h:form id="login">
+
+				<p:panel id="loginPanel" style="width:940px" >
+					<h:panelGrid id="loginGrid" columns="3" cellpadding="5">
+						
+						<p:focus>
+							<h:outputLabel id="usernameLabel" for="username" value="#{msg['login_username']}" />
+						</p:focus>
+						
+						<p:inputText id="username" value="#{loginBean.username}" maxlength="20" required="true"/>
+									
+						<p:message id="loginValidateErrorMessage" for="username"/>
+									
+						<h:outputLabel id="passwordLabel" for="password" value="#{msg['login_password']}" />
+						
+						<p:password id="password" value="#{loginBean.password}" redisplay="false" feedback="false" maxlength="10" required="true"/>  
+									
+						<p:message id="passwordValidateErrorMessage" for="password"/>
+						
+					</h:panelGrid>
+				</p:panel>
+			
+				<p:messages/>
+				
+				<br/>
+			
+				<p:commandButton id="entrarButton" value="#{msg.login_entrar}" actionListener="#{loginBean.executeLogin}" ajax="false"/>
+
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</html>

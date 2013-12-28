@@ -1,0 +1,58 @@
+Configuración del IDE Eclipse:
+
+- Instalar JDK 6 o superior
+- Instalar Tomcat 6 o superior
+- Instalar la versión más actual de maven disponible
+
+- Instalar versión más actual de eclipse edición J2EE disponible
+	Configurar eclipse: 
+		- JDK (seleccionar JDK en lugar de JRE, poner la versión en en el nombre)
+		- Server (Poner la versión en en el nombre)
+
+- Instalar plugin de maven para eclipse, m2eclipse
+
+- Configuración general eclipse:
+	- eclipse.ini jm=JDK
+	- JDK = jdk6
+	- Server = Tomcat 6
+
+
+Instalar y crear la BD:
+
+	H2 es una BD open source muy ligera escrita enteramente en Java que incluye en su instalación un cliente web para administrarla
+
+	Acceder a la URL: http://www.h2database.com
+	Download-Windows installer (4MB)	
+	Acceder al cliente web de administración de H2 "Inicio-H2-H2Console" para iniciar la BD 
+	(Acceder al icono de la barra de tareas para detener la BD)
+
+	Configurar la nueva BD:
+		URL JDBC: jdbc:h2:tcp://localhost/~/coremain
+		nombre de usuario: coremain
+		Contraseña: coremain
+	Conectar y ejecutar el script de creación de la BD "20120105_coremainWeb_BD.sql" copiando y pegando
+	el contenido del script en campo para la ejecución de sentencias SQL y pulsando "Ejecutar"
+	Este proceso puede tardar unos minutos.
+
+
+Instalación del proyecto:
+
+- Crear nuevo workspace, copiar allí los proyectos y desde eclipse: "import-General-Existing projects into workspace"
+
+- Configurar en cada proyecto la JDK y Server utilizado:
+	Acceder a las propiedades de cada proyecto y:
+		- en "Java Build Path-Libraries-JRE System Library" editar y seleccionar la definida anteriormente en eclipse.
+		- en "Project Facets-Java-Runtimes" Seleccionar el Servidor definido anteriormente en eclipse.
+
+- Instalar el el repositorio de Maven (siguiendo el orden) los artefactos coremainBaseService, coremainTerritoryService y CoremainUserService, para ello:
+	Para cada uno de estos proyectos, seleccionar el proyecto correspondiente - Run as - Maven Install
+	
+
+- Desde eclipse desplegar la aplicacion coremainWeb en el servidor:
+	Desde la vista "Server" Nuevo - Server - Seleccionar el Servidor correspondiente y añadir la aplicación coremainWeb
+	Iniciar el Servidor pulsando el botón "Start server" o "Start server in debug mode".
+
+- Acceder a la aplicación en la URL: http://localhost:8080/coremainWeb
+	- Puede autenticarse en la aplicación con el siguiente usuario registrado en BD:
+		nombre de usuario: admin
+		password: admin

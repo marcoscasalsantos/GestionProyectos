@@ -1,0 +1,159 @@
+
+/*
+ * Colores
+ *
+ * #ffffff blanco
+ * #f2f5f7 blanco
+ *
+ * #339933 verde
+ * #2779aa verde oscuro
+ 
+ * #CC0000 rojo
+ 
+ * #deedf7 celeste oscuro
+ * #e4f1fb celeste claro
+ *
+ * #aed0ea azul claro
+ * #74b2e2 azul normal   
+  
+ * #0080C0 azul oscuro 1 (fuentes)
+ * #0070a3 azul oscuro 2
+ 
+ * #2694e8 azul intenso
+ * #3baae3 azul intenso
+ 
+ * #f9dd34 amarillo huevo
+ * #ffef8f amarillo claro
+ 
+ * #dddddd gris claro
+ * #B7C4D0 gris oscuro
+ *
+ * #000000 negro 1
+ * #222222 negro 2
+ * #363636 negro 3
+ */
+
+
+/* links etiquetas html <h:commandLink <h:outputLink... etc */
+
+/* Sobreescribe el tamaño de la fuente de primefaces */
+.ui-widget, .ui-widget .ui-widget {
+    font-size: 11px;
+}
+
+.ui-selectonemenu {
+	font-size: 11px;
+}
+
+img {border: none;}
+
+
+a {text-decoration: none;}
+
+a:visited {text-decoration: none;}
+
+a:active {text-decoration: none;}
+
+a:hover {text-decoration: underline;}
+
+.textoGris9{
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+	font-size: 9px; 
+	font-weight: normal; 
+	color: #999999; 
+	text-decoration: none;
+}
+
+.centered {     
+	margin: 0px auto; 
+} 
+
+
+.columnAlignLeft{
+	text-align: left;
+}
+
+.columnAlignCenter{
+	text-align: center;
+}
+
+.columnAlignRight{
+	text-align: right;
+}
+
+
+.ui-fieldset {
+background-color: transparent;
+border-color: transparent;
+}
+
+
+
+.pf-picklist-source{
+    background-color: red !important;
+    color: white !important;
+    width: auto !important;
+}
+
+.pf-picklist-target{
+    background-color: red !important;
+    color: white !important;    
+    width: auto !important;
+}
+
+
+
+
+
+
+/* template Layout especifications
+----------------------------------*/
+ #contenedor{
+    /*width: 950px;*/
+    margin: auto;
+    heigth:auto;
+    overflow:auto;
+}
+
+#menu{
+    float: left;
+   /* width: 150px;*/
+    heigth:auto;
+    overflow:auto;
+}
+
+#contenido{
+    float: left;
+   /* width: 800px;*/
+    heigth:auto;
+    overflow:auto;
+    background-image:url("/resources/images/header.jpg");
+}
+
+#norte{
+	background-image:url("/resources/images/header.jpg");
+	
+}
+
+
+.ui-accordion .ui-accordion-content
+{
+    /* padding: 0 !important; */
+    border-style: none;
+    background-color: transparent;
+    background-image: none;
+}
+
+
+.ui-accordion .ui-accordion-header
+{
+	border-style: none;
+    background-color: transparent;
+    background-image: none;
+    color: #000000 !important;  /* no funciona,al seleccionarse la pestaña se pone de blanco igual */
+}
+
+.ui-panelgrid td, .ui-panelgrid tr
+{
+    border-style: none !important
+}

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>	
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"	
+	xmlns:sec="http://www.springframework.org/security/facelets/tags"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions" >
+	
+	<ui:composition>
+								
+		<!-- PROVINCIAS TABLE -->
+	    <p:dataTable id="municipiosTable" var="municipio" value="#{municipioBean.municipios}" rowKey="#{municipio.idMunicipio}"
+               selection="#{municipioBean.selectedMunicipio}" selectionMode="single" 
+               paginator="true" rows="10" paginatorPosition="bottom" 
+               resizableColumns="true">
+	    
+	    	<f:facet name="header">
+	    		<h:outputText value="Municipios" styleClass="ui-widget" style="font-weight: bold"/>
+	    	</f:facet>
+	    	    
+	        <p:column>
+	            <f:facet name="header" style="width:100px">
+	                    Código INE
+	            </f:facet>
+	            <h:outputText value="#{municipio.codigoIneMunicipio}" />
+	        </p:column>
+	    
+	        <p:column sortBy="#{municipio.nombreMunicipio}">
+	            <f:facet name="header">
+	                    Nombre
+	            </f:facet>
+	            <h:outputText value="#{municipio.nombreMunicipio}" />
+	        </p:column>
+	        
+	        <p:column sortBy="#{municipio.nombreProvincia}">
+	            <f:facet name="header">
+	                    Provincia
+	            </f:facet>
+	            <h:outputText value="#{municipio.nombreProvincia}" />
+	        </p:column>		        
+	        
+	        
+	        <p:column sortBy="#{municipio.nombreComunidad}">
+	            <f:facet name="header">
+	                    Comunidad
+	            </f:facet>
+	            <h:outputText value="#{municipio.nombreComunidad}" />
+	        </p:column>		        
+									        
+			<f:facet name="footer" style="text-align:left">  
+				<p:commandButton value="Nuevo" icon="ui-icon-plus" action="#{municipioBean.goNewMunicipio}" ajax="false" style="float:left" />
+							
+				&#160;&#160;&#160;
+												
+				<h:outputText value="#{fn:length(municipioBean.municipios)} municipios en total." styleClass="ui-widget" />								
+				
+				&#160;&#160;&#160;			
+							
+										
+				<h:commandLink style="float:right">
+					<p:graphicImage value="/resources/images/ico_excel.gif" style="vertical-align: bottom" title="Exportar a Excel"/>  
+					<p:dataExporter type="xls" target="municipiosTable" fileName="Municipios_España"/>  
+				</h:commandLink>
+					
+				&#160;&#160;&#160;																				
+											
+				<h:commandLink style="float:right">
+					<p:graphicImage value="/resources/images/ico_pdf.gif" style="vertical-align: bottom" title="Exportar a PDF"/> 
+					<p:dataExporter type="pdf" target="municipiosTable" fileName="Municipios_España" encoding="ISO8859-1"/>  
+				</h:commandLink>
+											
+			</f:facet>				        
+	        
+	    </p:dataTable>
+  			
+	    <p:contextMenu for="municipiosTable">
+     			<p:menuitem value="Editar" action="#{municipioBean.goMunicipioDetail}" icon="ui-icon-search" ajax="false"/>
+     			<p:menuitem value="Eliminar" update="municipiosTable" actionListener="#{municipioBean.deleteMunicipio}" icon="ui-icon-close"/>
+ 			</p:contextMenu>
+		  					    			
+					
+	</ui:composition>
+</html>
+
+

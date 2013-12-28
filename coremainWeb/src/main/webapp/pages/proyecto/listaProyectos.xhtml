@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>	
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags">
+	
+	
+   <ui:composition template="/WEB-INF/facelets/templates/layout.xhtml">
+       
+     <ui:define name="content">  
+       
+   <!--      <h:form id="listaProyectosForm">   -->
+          
+             <p:fieldset legend="Lista de proyectos" style="width:940px">
+             
+                 <br/>
+                 
+                 <p:dataTable id="projectsTable" var="proyectos" value="#{projectBean.projects}" rowKey="#{proyectos.projectId}"
+                              selection="#{projectBean.selectedProject}" selectionMode="single" style="width:940px;"
+                              paginator="true" rows="10"
+                              paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                              rowsPerPageTemplate="5,10,15">
+                              
+                              <p:column sortBy="#{proyectos.codigoProyecto}" filterBy="#{proyectos.codigoProyecto}">
+				                 <f:facet name="header">
+				                    Código de proyecto
+				                 </f:facet>
+				                 <h:outputText value="#{proyectos.codigoProyecto}" />
+				              </p:column>	
+				              
+				              <p:column sortBy="#{proyectos.nombreProyecto}" filterBy="#{proyectos.nombreProyecto}">
+				                 <f:facet name="header">
+				                    Nombre de proyecto
+				                 </f:facet>
+				                 <h:outputText value="#{proyectos.nombreProyecto}" />
+				              </p:column>
+				              
+				               <p:column sortBy="#{proyectos.fechaInicioProyecto}" filterBy="#{proyectos.fechaInicioProyecto}">
+				                 <f:facet name="header">
+				                    Fecha de inicio
+				                 </f:facet>
+				                 <h:outputText value="#{proyectos.fechaInicioProyecto}" />
+				              </p:column>
+				              
+				               <p:column sortBy="#{proyectos.fechaFinProyecto}" filterBy="#{proyectos.fechaFinProyecto}">
+				                 <f:facet name="header">
+				                    Fecha de fin
+				                 </f:facet>
+				                 <h:outputText value="#{proyectos.fechaFinProyecto}" />
+				              </p:column>
+       
+                 </p:dataTable>
+                 
+                 <f:ajax render=":contenidoCentro">
+                    <p:contextMenu for="projectsTable">
+		      			<p:menuitem value="Detalle proyecto" action="#{projectBean.goProjectDetail}" icon="ui-icon-search"/>
+		      			<p:menuitem value="Eliminar" update="projectsTable,messages" 
+		      			            actionListener="#{projectBean.deleteProject}" icon="ui-icon-close"/>      			
+		  		    </p:contextMenu>
+		  		 </f:ajax>
+		  		 
+		  		 
+		  		 <p:commandButton value="Seleccionar" actionListener="#{projectBean.selectProject}" 
+		  		                  update=":cabeceraForm:texto,messages,:menuPrincipalForm">
+                       <f:ajax render=":menuPrincipalForm :cabeceraForm:texto"/> 
+                 </p:commandButton> 
+                  
+       
+             </p:fieldset>
+             
+                 <p:messages id="messages"/>
+                 
+                 
+   
+   <!--      </h:form> -->
+       
+     </ui:define>      
+  
+   </ui:composition>
+
+</html>

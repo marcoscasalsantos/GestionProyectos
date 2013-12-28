@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<faces-config
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
+    version="2.0">
+    
+	<application>
+		
+		<!-- 
+	    <el-resolver>
+	    	org.springframework.web.jsf.el.SpringBeanFacesELResolver
+	    </el-resolver>
+	     -->
+	
+		<locale-config>
+			<default-locale>gl</default-locale>
+			<supported-locale>es</supported-locale>
+		</locale-config>
+		
+		<!-- Resource bundle for application labels/text messages -->
+		<!-- Los archvos ubicados en src/main/resources son empaquetados por maven en la raiz del classpath -->
+		<resource-bundle>
+			<base-name>MessagesResources</base-name>
+			<var>msg</var>
+		</resource-bundle>
+		
+		<!-- Resource bundle for application system messages-->
+		<!-- Los archvos ubicados en src/main/resources son empaquetados por maven en la raiz del classpath -->
+		<resource-bundle>
+			<base-name>SystemResources</base-name>
+			<var>system</var>
+		</resource-bundle>	
+						
+	</application>
+	
+	
+	<!-- Define un exception-handle-factory para gestionar las excepciones de la aplicación -->
+	<factory>
+		<exception-handler-factory>es.coremain.coremainWeb.view.util.exceptionHandler.CoremainWebExceptionHandlerFactory</exception-handler-factory>
+	</factory>	    
+    
+	<lifecycle>
+		<!-- Listener del ciclo de vida de una petición JSF utilizado para evitar que se use la cache del navegador
+	 	-->		
+		<phase-listener>es.coremain.coremainWeb.view.util.phaseListener.CacheControlPhaseListener</phase-listener>
+		
+		<!-- Listener del ciclo de vida de una petición JSF utilizado para customizar los mensajes
+	  	de spring-security y mostrarlos con JSF
+	 	-->		
+		<phase-listener>es.coremain.coremainWeb.view.util.phaseListener.LoginErrorPhaseListener</phase-listener>
+	</lifecycle> 
+
+
+	<!-- navigation rules -->
+
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>error</from-outcome>
+			<to-view-id>/pages/error/error.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>viewExpired</from-outcome>
+			<to-view-id>/pages/error/viewExpired.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>login</from-outcome>
+			<to-view-id>/pages/login.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>	 
+	
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+				
+		<navigation-case>
+			<from-outcome>usuarios</from-outcome>
+			<to-view-id>/pages/user/usuarios.xhtml</to-view-id>
+		</navigation-case>
+				
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+				
+		<navigation-case>
+			<from-outcome>territorio</from-outcome>
+			<to-view-id>/pages/territory/territorio.xhtml</to-view-id>
+		</navigation-case>
+				
+	</navigation-rule>
+		
+	
+	
+
+	<navigation-rule>
+		<from-view-id>/pages/user/usuarios.xhtml</from-view-id>
+				
+		<navigation-case>
+			<from-outcome>detalleUsuario</from-outcome>
+			<to-view-id>/pages/user/detalleUsuario.xhtml</to-view-id>
+		</navigation-case>
+		
+		<navigation-case>
+			<from-outcome>nuevoUsuario</from-outcome>
+			<to-view-id>/pages/user/nuevoUsuario.xhtml</to-view-id>
+		</navigation-case>			
+		
+	</navigation-rule>
+	
+		
+	<navigation-rule>
+		<from-view-id>/pages/user/detalleUsuario.xhtml</from-view-id>
+		
+		<navigation-case>
+			<from-outcome>menuPrincipal</from-outcome>
+			<to-view-id>/pages/user/menuPrincipal.xhtml</to-view-id>
+		</navigation-case>
+		
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/pages/user/nuevoUsuario.xhtml</from-view-id>
+		
+		<navigation-case>
+			<from-outcome>menuPrincipal</from-outcome>
+			<to-view-id>/pages/menuPrincipal.xhtml</to-view-id>
+		</navigation-case>
+		
+	</navigation-rule>	
+	
+	<!-- NAVEGACIONES PARA LAS PAGINAS PROPIAS DEL PROYECTO -->
+	<navigation-rule>
+	   <from-view-id>*</from-view-id>
+	   
+	   <navigation-case>
+	        <from-outcome>newUser</from-outcome>
+	        <to-view-id>/pages/usuarios/nuevoUsuario.xhtml</to-view-id>
+	        <redirect/>
+	   </navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+	   <from-view-id>*</from-view-id>
+	   
+	   <navigation-case>
+	        <from-outcome>listaUsuarios</from-outcome>
+	        <to-view-id>/pages/usuarios/listaUsuarios.xhtml</to-view-id>
+	        <redirect/>
+	   </navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+	   <from-view-id>/pages/usuarios/listaUsuarios.xhtml</from-view-id>
+	   
+	   <navigation-case>
+	        <from-outcome>detalleUsuario</from-outcome>
+	        <to-view-id>/pages/usuarios/detalleUsuario.xhtml</to-view-id>
+	        <redirect/>
+	   </navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+	   <from-view-id>/pages/tareas/detalleTarea.xhtml</from-view-id>
+	   
+	   <navigation-case>
+	        <from-outcome>detalleUsuario</from-outcome>
+	        <to-view-id>/pages/usuarios/detalleUsuario.xhtml</to-view-id>
+	        <redirect/>
+	   </navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+	   <from-view-id>/pages/usuarios/listaUsuarios.xhtml</from-view-id>
+	   
+	   <navigation-case>
+	        <from-outcome>gestionUsuario</from-outcome>
+	        <to-view-id>/pages/usuarios/gestionUsuario.xhtml</to-view-id>
+	        <redirect/>
+	   </navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+	   <from-view-id>*</from-view-id>
+	   
+	   <navigation-case>
+	        <from-outcome>nuevoProyecto</from-outcome>
+	        <to-view-id>/pages/proyecto/nuevoProyecto.xhtml</to-view-id>
+	        <redirect/>
+	   </navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+	   <from-view-id>*</from-view-id>
+	   
+	   <navigation-case>
+	        <from-outcome>listaProyectos</from-outcome>
+	        <to-view-id>/pages/proyecto/listaProyectos.xhtml</to-view-id>
+	        <redirect/>
+	   </navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+	   <from-view-id>*</from-view-id>
+	   
+	   <navigation-case>
+	        <from-outcome>detalleProyecto</from-outcome>
+	        <to-view-id>/pages/proyecto/detalleProyecto.xhtml</to-view-id>
+	        <redirect/>
+	   </navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+	   <from-view-id>*</from-view-id>
+	   
+	   <navigation-case>
+	        <from-outcome>menuPrincipal</from-outcome>
+	        <to-view-id>/pages/menuPrincipal.xhtml</to-view-id>
+	        <redirect/>
+	   </navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+	   <from-view-id>*</from-view-id>
+	   
+	   <navigation-case>
+	        <from-outcome>participantes</from-outcome>
+	        <to-view-id>/pages/proyecto/participantes.xhtml</to-view-id>
+	        <redirect/>
+	   </navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+	   <from-view-id>*</from-view-id>
+	   
+	   <navigation-case>
+	        <from-outcome>nuevaTarea</from-outcome>
+	        <to-view-id>/pages/tareas/nuevaTarea.xhtml</to-view-id>
+	        <redirect/>
+	   </navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+	   <from-view-id>*</from-view-id>
+	   
+	   <navigation-case>
+	        <from-outcome>listaTareas</from-outcome>
+	        <to-view-id>/pages/tareas/listaTareas.xhtml</to-view-id>
+	        <redirect/>
+	   </navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+	   <from-view-id>*</from-view-id>
+	   
+	   <navigation-case>
+	        <from-outcome>detalleTarea</from-outcome>
+	        <to-view-id>/pages/tareas/detalleTarea.xhtml</to-view-id>
+	        <redirect/>
+	   </navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+	   <from-view-id>*</from-view-id>
+	   
+	   <navigation-case>
+	        <from-outcome>asignarTarea</from-outcome>
+	        <to-view-id>/pages/tareas/asignarTarea.xhtml</to-view-id>
+	        <redirect/>
+	   </navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+	   <from-view-id>*</from-view-id>
+	   
+	   <navigation-case>
+	        <from-outcome>imputarHoras</from-outcome>
+	        <to-view-id>/pages/tareas/imputarHoras.xhtml</to-view-id>
+	        <redirect/>
+	   </navigation-case>
+	</navigation-rule>
+	
+		<navigation-rule>
+	   <from-view-id>*</from-view-id>
+	   
+	   <navigation-case>
+	        <from-outcome>seguimiento</from-outcome>
+	        <to-view-id>/pages/proyecto/seguimiento.xhtml</to-view-id>
+	        <redirect/>
+	   </navigation-case>
+	</navigation-rule>
+	
+	
+	<navigation-rule>
+	   <from-view-id>*</from-view-id>
+	   
+	   <navigation-case>
+	        <from-outcome>tareas</from-outcome>
+	        <to-view-id>/pages/tareas/tareas.xhtml</to-view-id>
+	        <redirect/>
+	   </navigation-case>
+	</navigation-rule>
+	
+		
+
+</faces-config>

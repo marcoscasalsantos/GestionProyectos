@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"      
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"      
+	version="3.0"> 
+    	
+	<context-param>
+		<param-name>primefaces.THEME</param-name>  
+		<param-value>aristo</param-value>  
+	</context-param>
+  
+	<context-param>
+		<description>
+			Define the value returned by Application.getProjectStage(). Allowed values: Production, Development, 
+			UnitTest, SystemTest, Extension. Default value is Production.
+		</description>
+		<param-name>javax.faces.PROJECT_STAGE</param-name>
+		<param-value>Development</param-value>
+	</context-param>
+  
+	<context-param>
+		<description>Do not render comments in facelets (xhtml) pages. Default is false.</description>
+    	<param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name>
+    	<param-value>true</param-value>
+	</context-param>
+	
+	
+	<!-- ============================== -->
+	<!-- ==== Emdebbing H2 Database === -->
+	<!-- ============================== -->	
+
+	<!-- When the web application is stopped, the database connection will be closed automatically. 
+	If the TCP server is started within the DbStarter, it will also be stopped automatically. -->
+
+	<!-- Souce:  http://www.h2database.com/html/tutorial -->  	
+	<!-- Using a Servlet Listener to Start and Stop a Database H2 -->
+	<!-- 
+	<listener>
+    	<listener-class>org.h2.server.web.DbStarter</listener-class>
+	</listener>
+	 -->	
+  
+	<servlet>
+    	<servlet-name>FacesServlet</servlet-name>
+    	<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+    	<load-on-startup>1</load-on-startup>
+  	</servlet>
+  
+	<servlet-mapping>
+		<servlet-name>FacesServlet</servlet-name>
+		<url-pattern>*.xhtml</url-pattern>
+	</servlet-mapping>
+  
+  
+	<!-- Carga el contextConfig indicado  -->
+	<!-- Como JSF se encarga del contexto de la parte web de la aplicación (managed beans, navegación, location) este se configura en el faces-config.xml -->  
+	<!-- security-context.xml configura la seguridad en los accesos a la aplicación -->
+	<context-param>  
+		<param-name>contextConfigLocation</param-name>  
+		<param-value>
+			classpath*:applicationContext.xml
+			/WEB-INF/security-context.xml  
+		</param-value>  
+	</context-param> 
+  
+	<listener>
+		<listener-class>
+			org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+	</listener>    
+	
+  
+ 	<!-- Enables Spring Security -->
+    <filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>
+			org.springframework.web.filter.DelegatingFilterProxy
+		</filter-class>
+    </filter>
+
+    <filter>
+        <filter-name>encoding-filter</filter-name>
+        <filter-class>
+            org.springframework.web.filter.CharacterEncodingFilter
+        </filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>encoding-filter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+	<!-- The filter-mapping "/*" ensures all requests will be processed by Spring Security filters -->
+    <filter-mapping>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <url-pattern>/*</url-pattern>
+        <!-- SpirngSecurityFilterChain must be configure to process Servlet FORWARD as well as REQUESTs 
+        ya que se enviará como forward en el método LoginBean.executeLogin -->
+        <dispatcher>FORWARD</dispatcher>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+  
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>  
+</web-app>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>	
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"	
+	xmlns:sec="http://www.springframework.org/security/facelets/tags">
+	
+	<!-- <ui:composition template="/WEB-INF/facelets/templates/menuBarAndBreadCrumb.xhtml"> --> 
+	 <ui:composition template="/WEB-INF/facelets/templates/layout.xhtml"> 
+	     <!--<ui:define name="menu"></ui:define>-->
+	    <!--<ui:define name="content"></ui:define>-->
+			  
+			  <ui:define name="content">
+			  
+			          <p:messages id="mjesError"/>
+			          
+			          <h:outputText id="errores" value="#{projectBean.error}" style="color: red"></h:outputText>
+			          <h:outputText id="info" value="#{projectBean.info}" style="color: black"></h:outputText>
+			          
+			       
+			     
+			  </ui:define>
+			  
+									
+			<!--  <p:fieldset legend="Capas de la arquitectura" cellpadding="5" cellspacing="5">
+					<p:accordionPanel multiple="true">
+						<p:tab title="Presentación" style="ui-widget">
+							<h:panelGrid cellpadding="5">
+								<h:outputText styleClass="ui-widget"
+									value="La capa de presentación engloba las capas vista controlador del estándar MVC. Con el fin de proporcionar una arquitectura robusta y sencilla para agilizar el desarrollo y facilitar el mantenimiento se optó por utilizar las siguientes tecnologías: JSF + Facelets, Primefaces, Spring-Security" />
+							</h:panelGrid>
+						</p:tab>
+						<p:tab title="Servicios de negocio" styleClass="ui-widget">
+							<h:panelGrid cellpadding="5">							
+								<h:outputText styleClass="ui-widget" 
+									value="La capa de servicios de negocio contendrá toda la lógica de negocio de la aplicación. Se utiliza una arquitectura basada en servicios (SOA). Se usan interfaces para definir la funcionalidad de los servicios." />
+							</h:panelGrid>
+						</p:tab>
+						<p:tab title="Persistencia">
+							<h:panelGrid cellpadding="5" styleClass="ui-widget">
+								<h:outputText styleClass="ui-widget" 
+									value="Esta capa será la encargada de proporcionar acceso a los datos a la capa de servicios de negocio así como de la persistencia de los datos." />
+							</h:panelGrid>
+						</p:tab>
+					</p:accordionPanel>
+				</p:fieldset>  -->
+ 			
+			
+ </ui:composition>  
+</html>
+
+

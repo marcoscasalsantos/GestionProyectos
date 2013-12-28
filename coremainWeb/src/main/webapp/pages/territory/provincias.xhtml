@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>	
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"	
+	xmlns:sec="http://www.springframework.org/security/facelets/tags"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions" >
+	
+	<ui:composition>
+								
+		<!-- PROVINCIAS TABLE -->
+	    <p:dataTable id="provinciasTable" var="provincia" value="#{provinciaBean.provincias}" rowKey="#{provincia.idProvincia}"
+               selection="#{provinciaBean.selectedProvincia}" selectionMode="single"  
+               paginator="true" rows="10" paginatorPosition="bottom" 
+               resizableColumns="true">
+	    
+	    	<f:facet name="header">
+	    		<h:outputText value="Provincias" styleClass="ui-widget" style="font-weight: bold"/>
+	    	</f:facet>
+	    
+	        <p:column style="width:100px">
+	            <f:facet name="header">
+	                    Código INE
+	            </f:facet>
+	            <h:outputText value="#{provincia.codigoIneProvincia}" />
+	        </p:column>	    
+	    
+	        <p:column sortBy="#{provincia.nombreProvincia}" >
+	            <f:facet name="header">
+	                    Nombre
+	            </f:facet>
+	            <h:outputText value="#{provincia.nombreProvincia}" />
+	        </p:column>			    
+	    
+	        <p:column sortBy="#{provincia.comunidad.nombreComunidad}">
+	            <f:facet name="header">
+	                    Comunidad
+	            </f:facet>
+	            <h:outputText value="#{provincia.comunidad.nombreComunidad}" />
+	        </p:column>	        
+									        
+			<f:facet name="footer" style="text-align:left">  
+				<p:commandButton value="Nuevo" icon="ui-icon-plus" action="#{provinciaBean.goNewProvincia}" ajax="false" style="float:left" />
+				
+				&#160;&#160;&#160;
+												
+				<h:outputText value="#{fn:length(provinciaBean.provincias)} comunidades en total." styleClass="ui-widget"/>								
+				
+				&#160;&#160;&#160;										
+				
+				<h:commandLink style="float:right">
+					<p:graphicImage value="/resources/images/ico_excel.gif" style="vertical-align: bottom" title="Exportar a Excel"/>  
+					<p:dataExporter type="xls" target="provinciasTable" fileName="Provincias_España"/>  
+				</h:commandLink>
+					
+				&#160;&#160;&#160;																				
+											
+				<h:commandLink style="float:right">
+					<p:graphicImage value="/resources/images/ico_pdf.gif" style="vertical-align: bottom" title="Exportar a PDF"/> 
+					<p:dataExporter type="pdf" target="provinciasTable" fileName="Provincias_España" encoding="ISO8859-1"/>  
+				</h:commandLink>
+											
+			</f:facet>				        
+	        
+	    </p:dataTable>
+  			
+	    <p:contextMenu for="provinciasTable">
+     			<p:menuitem value="Editar" action="#{provinciaBean.goProvinciaDetail}" icon="ui-icon-search" ajax="false"/>
+     			<p:menuitem value="Eliminar" update="provinciasTable" actionListener="#{provinciaBean.deleteProvincia}" icon="ui-icon-close"/>
+ 			</p:contextMenu>
+		  					    			
+					
+	</ui:composition>
+</html>
+
+

@@ -1,0 +1,239 @@
+/*
+* jQuery UI CSS Framework
+* Copyright (c) 2010 AUTHORS.txt (http://jqueryui.com/about)
+* Dual licensed under the MIT (MIT-LICENSE.txt) and GPL (GPL-LICENSE.txt) licenses.
+*/
+
+/* Layout helpers
+----------------------------------*/
+.ui-helper-hidden { display: none; }
+.ui-helper-hidden-accessible { position: absolute; left: -99999999px; }
+.ui-helper-reset { margin: 0; padding: 0; border: 0; outline: 0; line-height: 1.3; text-decoration: none; font-size: 100%; list-style: none; }
+.ui-helper-clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+.ui-helper-clearfix { display: inline-block; }
+/* required comment for clearfix to work in Opera \*/
+* html .ui-helper-clearfix { height:1%; }
+.ui-helper-clearfix { display:block; }
+/* end clearfix */
+.ui-helper-zfix { width: 100%; height: 100%; top: 0; left: 0; position: absolute; opacity: 0; filter:Alpha(Opacity=0); }
+
+
+/* Interaction Cues
+----------------------------------*/
+.ui-state-disabled { cursor: default !important; }
+
+
+/* Icons
+----------------------------------*/
+
+/* states and images */
+.ui-icon { display: block; text-indent: -99999px; overflow: hidden; background-repeat: no-repeat; }
+
+
+.ui-icon-excel {    
+    width: 16px;
+    height: 16px;
+    background-image: url(#{resource['images:ico_excel.gif']});    
+}  
+
+
+
+
+/* Misc visuals
+----------------------------------*/
+
+/* Overlays */
+.ui-widget-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+
+/*
+* jQuery UI CSS Framework
+* Copyright (c) 2010 AUTHORS.txt (http://jqueryui.com/about)
+* Dual licensed under the MIT (MIT-LICENSE.txt) and GPL (GPL-LICENSE.txt) licenses.
+* To view and modify this theme, visit http://jqueryui.com/themeroller/?ffDefault=Lucida%20Grande,%20Lucida%20Sans,%20Arial,%20sans-serif&fwDefault=bold&fsDefault=1.1em&cornerRadius=6px&bgColorHeader=deedf7&bgTextureHeader=03_highlight_soft.png&bgImgOpacityHeader=100&borderColorHeader=aed0ea&fcHeader=222222&iconColorHeader=72a7cf&bgColorContent=f2f5f7&bgTextureContent=04_highlight_hard.png&bgImgOpacityContent=100&borderColorContent=dddddd&fcContent=362b36&iconColorContent=72a7cf&bgColorDefault=d7ebf9&bgTextureDefault=02_glass.png&bgImgOpacityDefault=80&borderColorDefault=aed0ea&fcDefault=2779aa&iconColorDefault=3d80b3&bgColorHover=e4f1fb&bgTextureHover=02_glass.png&bgImgOpacityHover=100&borderColorHover=74b2e2&fcHover=0070a3&iconColorHover=2694e8&bgColorActive=3baae3&bgTextureActive=02_glass.png&bgImgOpacityActive=50&borderColorActive=2694e8&fcActive=ffffff&iconColorActive=ffffff&bgColorHighlight=ffef8f&bgTextureHighlight=03_highlight_soft.png&bgImgOpacityHighlight=25&borderColorHighlight=f9dd34&fcHighlight=363636&iconColorHighlight=2e83ff&bgColorError=cd0a0a&bgTextureError=01_flat.png&bgImgOpacityError=15&borderColorError=cd0a0a&fcError=ffffff&iconColorError=ffffff&bgColorOverlay=eeeeee&bgTextureOverlay=08_diagonals_thick.png&bgImgOpacityOverlay=90&opacityOverlay=80&bgColorShadow=000000&bgTextureShadow=04_highlight_hard.png&bgImgOpacityShadow=70&opacityShadow=30&thicknessShadow=7px&offsetTopShadow=-7px&offsetLeftShadow=-7px&cornerRadiusShadow=8px
+*/
+
+
+/*
+ * Colores
+ *
+ * #ffffff blanco
+ * #f2f5f7 blanco
+ *
+ * #339933 verde
+ * #2779aa verde oscuro
+ 
+ * #CC0000 rojo
+ 
+ * #deedf7 celeste oscuro
+ * #e4f1fb celeste claro
+ *
+ * #aed0ea azul claro
+ * #74b2e2 azul normal   
+  
+ * #0080C0 azul oscuro 1 (fuentes)
+ * #0070a3 azul oscuro 2
+ 
+ * #2694e8 azul intenso
+ * #3baae3 azul intenso
+ 
+ * #f9dd34 amarillo huevo
+ * #ffef8f amarillo claro
+ 
+ * #dddddd gris claro
+ * #B7C4D0 gris oscuro
+ *
+ * #000000 negro 1
+ * #222222 negro 2
+ * #363636 negro 3
+ */
+
+
+/* links etiquetas html <h:commandLink <h:outputLink... etc */
+
+
+img {border: none;}
+
+
+a {text-decoration: none;}
+
+a:visited {text-decoration: none;}
+
+a:active {text-decoration: none;}
+
+a:hover {text-decoration: underline;}
+
+.textoGris9{
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+	font-size: 9px; 
+	font-weight: normal; 
+	color: #999999; 
+	text-decoration: none;
+}
+
+.centered {     
+	margin: 0px auto; 
+} 
+
+
+.columnAlignLeft{
+	text-align: left;
+}
+
+.columnAlignCenter{
+	text-align: center;
+}
+
+.columnAlignRight{
+	text-align: right;
+}
+
+
+.ui-fieldset {
+background-color: transparent;
+border-color: transparent;
+}
+
+
+
+.pf-picklist-source{
+    background-color: red !important;
+    color: white !important;
+    width: auto !important;
+}
+
+.pf-picklist-target{
+    background-color: red !important;
+    color: white !important;    
+    width: auto !important;
+}
+
+
+
+
+
+
+
+/* Component containers
+----------------------------------*/
+.ui-widget { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px; color: #0080C0;}
+.ui-widget .ui-widget { font-size: 11px;}
+.ui-widget input, .ui-widget output .ui-widget select, .ui-widget textarea, .ui-widget button { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px; color: #0080C0;}
+.ui-widget-content { border: 1px solid #dddddd; background: #f2f5f7 url(images/ui-bg_highlight-hard_100_f2f5f7_1x100.png) 50% top repeat-x; color: #0080C0; }
+.ui-widget-content a { color: #0080C0; }
+.ui-widget-header { border: 1px solid #aed0ea; background: #deedf7 url(images/ui-bg_highlight-soft_100_deedf7_1x100.png) 50% 50% repeat-x; color: #222222; font-weight: bold; }
+.ui-widget-header a { color: #222222; }
+
+/* Interaction states
+----------------------------------*/
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { border: 1px solid #aed0ea; background: #d7ebf9 url(images/ui-bg_glass_80_d7ebf9_1x400.png) 50% 50% repeat-x; font-weight: bold; color: #2779aa; }
+.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited {color: #0080C0; text-decoration: none; }
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { border: 1px solid #74b2e2; background: #e4f1fb url(images/ui-bg_glass_100_e4f1fb_1x400.png) 50% 50% repeat-x; font-weight: bold; color: #0070a3; }
+.ui-state-hover a, .ui-state-hover a:hover { color: #0070a3; text-decoration: none; }
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { border: 1px solid #2694e8; background: #3baae3 url(images/ui-bg_glass_50_3baae3_1x400.png) 50% 50% repeat-x; font-weight: bold; color: #ffffff; }
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { color: #ffffff; text-decoration: none; }
+.ui-widget :active { outline: none; }
+
+/* Interaction Cues
+----------------------------------*/
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight  {border: 1px solid #f9dd34; background: #ffef8f url(images/ui-bg_highlight-soft_25_ffef8f_1x100.png) 50% top repeat-x; color: #363636; }
+.ui-state-highlight a, .ui-widget-content .ui-state-highlight a,.ui-widget-header .ui-state-highlight a { color: #363636; }
+.ui-state-error, .ui-widget-content .ui-state-error, .ui-widget-header .ui-state-error {border: 1px solid #cd0a0a; background: #cd0a0a url(images/ui-bg_flat_15_cd0a0a_40x100.png) 50% 50% repeat-x; color: #ffffff; }
+.ui-state-error a, .ui-widget-content .ui-state-error a, .ui-widget-header .ui-state-error a { color: #ffffff; }
+.ui-state-error-text, .ui-widget-content .ui-state-error-text, .ui-widget-header .ui-state-error-text { color: #ffffff; }
+.ui-priority-primary, .ui-widget-content .ui-priority-primary, .ui-widget-header .ui-priority-primary { font-weight: bold; }
+.ui-priority-secondary, .ui-widget-content .ui-priority-secondary,  .ui-widget-header .ui-priority-secondary { opacity: .7; filter:Alpha(Opacity=70); font-weight: normal; }
+.ui-state-disabled, .ui-widget-content .ui-state-disabled, .ui-widget-header .ui-state-disabled { opacity: .35; filter:Alpha(Opacity=35); background-image: none; }
+
+
+/* template Layout especifications
+----------------------------------*/
+ #contenedor{
+    /*width: 950px;*/
+    margin: auto;
+    heigth:auto;
+    overflow:auto;
+}
+
+#menu{
+    float: left;
+   /* width: 150px;*/
+    heigth:auto;
+    overflow:auto;
+}
+
+#contenido{
+    float: left;
+   /* width: 800px;*/
+    heigth:auto;
+    overflow:auto;
+    background-image:url("/resources/images/header.jpg");
+}
+
+#norte{
+	background-image:url("/resources/images/header.jpg");
+	
+}
+
+
+.ui-accordion .ui-accordion-content
+{
+    /* padding: 0 !important; */
+    border-style: none;
+    background-color: transparent;
+    background-image: none;
+}
+
+
+.ui-accordion .ui-accordion-header
+{
+	border-style: none;
+    background-color: transparent;
+    background-image: none;
+    color: #000000 !important;  /* no funciona,al seleccionarse la pestaña se pone de blanco igual */
+}
+
+.ui-panelgrid td, .ui-panelgrid tr
+{
+    border-style: none !important
+}

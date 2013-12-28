@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>	
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags">
+	
+	<ui:composition template="/WEB-INF/facelets/templates/layout.xhtml">
+
+    <ui:define name="content">
+
+       <p:fieldset legend="Asignar tarea" style="width:940px">
+       
+             <h:panelGrid id="usuariosEnTarea">
+                 <p:pickList value="#{tareaBean.usersTarea}" var="user"
+							itemLabel="#{user.fullName}" itemValue="#{user}" converter="userPickListConverter">		
+													
+								<f:facet name="sourceCaption">
+									<h:outputText value="Participan en el proyecto" />
+								</f:facet>									  
+								<f:facet name="targetCaption">
+									<h:outputText value="Asignados a la tarea" />
+								</f:facet>
+								
+	    		 </p:pickList>
+             </h:panelGrid>
+             
+             <p:commandButton value="Guardar" actionListener="#{tareaBean.asignarTarea}" update="messages,:contenidoCentro">
+               <f:ajax render=":contenidoCentro"/>
+             </p:commandButton>
+           
+           <p:messages id="messages"/> 
+
+       </p:fieldset>
+   
+     </ui:define>
+
+    </ui:composition>
+
+</html>

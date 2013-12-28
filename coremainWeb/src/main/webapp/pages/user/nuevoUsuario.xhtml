@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>	
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags">
+	
+	<ui:composition template="/WEB-INF/facelets/templates/menuBarAndBreadCrumb.xhtml">
+		<ui:define name="content">
+						
+			<h:form id="newUserForm">
+										
+				<p:fieldset legend="Nuevo Usuario" style="width:940px">
+					<h:panelGrid columns="2">
+						<h:panelGrid id="userDataPanel" columns="2" cellpadding="4">
+	        			
+				            <h:outputText value="Nombre usuario: *" />
+				            <p:focus>
+				            	<p:inputText id="username" value="#{userBean.selectedUser.username}" />			            				
+				            </p:focus>
+				            
+				            <h:outputLabel for="password1" value="Password 1: *" />
+            				<p:password id="password1" value="#{userBean.selectedUser.password}" feedback="true" match="password2" 
+            					label="Password 1" required="true" promptLabel="Introduzca contraseña, para más seguridad introduzca algún número y/o simbolo" weakLabel="Demasiado sencilla" 
+            					goodLabel="contraseña adecuada" strongLabel="Contraseña robusta"/>            				
+
+            				<h:outputLabel for="password2" value="Password 2: *" />
+            				<p:password id="password2" value="#{userBean.repeatedPassword}" feedback="false" label="Repetición contraseña" required="true"/>
+				            				            
+				            <h:outputLabel for="name" value="Nombre:" />
+				            <p:inputText id="name" value="#{userBean.selectedUser.name}" />
+				            
+				            <h:outputLabel for="surnames" value="Apellidos:" />
+				            <p:inputText id="surnames" value="#{userBean.selectedUser.surnames}" />			            				            			            
+				
+				            <h:outputLabel for="birthDate" value="Fecha de nacimiento:" />
+				            <p:inputMask id="birthDate" value="#{userBean.selectedUser.birthDate}" mask="99/99/9999" >
+				            	<f:convertDateTime pattern="dd/MM/yyyy" timeZone="#{localeBean.timeZone}"/>
+				            </p:inputMask>
+				
+				            <h:outputText value="NIF:" />
+				            <p:inputMask value="#{userBean.selectedUser.nif}" mask="99999999a" />
+				            			          
+			           	</h:panelGrid>
+	    			    			
+	    				<h:panelGrid id="userRolesPanel">
+	    					
+							<p:pickList value="#{userBean.avaliableAndSelectedRoles}" var="role"
+								itemLabel="#{role.name}" itemValue="#{role}" converter="rolePickListConverter" >								
+								<f:facet name="sourceCaption">
+									<h:outputText value="Roles disponibles" />
+								</f:facet>									  
+								<f:facet name="targetCaption">
+									<h:outputText value="Roles seleccionados" />
+								</f:facet>
+	    				</p:pickList>
+	    				</h:panelGrid>
+    				</h:panelGrid>
+    				    				
+    				<p:commandButton value="Guardar" actionListener="#{userBean.insertUser}" update="messages"/>
+    				
+    				<f:verbatim></f:verbatim>
+    				
+    				<p:messages id="messages"/>
+    				
+    			</p:fieldset>
+				
+				<br/>
+		            	
+				<p:commandButton value="Volver" action="usuarios" ajax="false" immediate="true"/>
+   			    			
+			</h:form>		
+			
+		</ui:define>
+	</ui:composition>
+</html>
+
+

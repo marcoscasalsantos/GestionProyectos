@@ -1,0 +1,31 @@
+Para embeber el servidor de aplicaciones Tomcat 7 y la BD H2 en la aplicacion CoremainWeb seguir los siguientes pasos:
+
+
+PARA EMBEBER EL TOMCAT 7:
+
+
+En el archivo coremainWeb/pom.xml
+
+	- Añadir los 3 repositorios para obtener los artefactos maven necesarios para embeber el tomcat 7
+
+	- Añadir las dependencias (tomcat-catalina, tomcat-embed-jasper) necesarioa para embeber el tomcat 7
+
+	- Añadir el pluggin para copiar el atributo de manifiesto principal en el war
+
+	- Añadir el pluggin para mover la main-class para que se localice al arrancar el war
+
+
+PARA EMBEBER LA BD H2:
+
+
+En el archivo coremainBaseService/src/main/resources/hibernate.properties:
+
+	- Añadir la ejecución del script inicial en la url de conexión con la BD.
+
+
+En el archivo coremainWeb/src/main/webapp/WEB-INF/web.xml
+	
+	- Añadir el servlet listener para iniciar y parar la base de datos H2.
+
+
+

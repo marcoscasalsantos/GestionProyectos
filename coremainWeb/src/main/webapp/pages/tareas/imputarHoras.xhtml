@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>	
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags">
+	
+	<ui:composition template="/WEB-INF/facelets/templates/layout.xhtml">
+
+    <ui:define name="content">
+
+        <p:fieldset legend="Tareas asignadas y en curso" style="width:940px">
+        
+               <p:dataTable id="tablaImputar" var="tareas" value="#{tareaBean.tareasAsignadasUsuario}" rowKey="#{tareas.tareaId}"
+                          selection="#{tareaBean.selectedTarea}" selectionMode="single" style="width:940px;"
+                          paginator="true" rows="10" 
+                          paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                          rowsPerPageTemplate="5,10,15">
+                          
+                          <p:column sortBy="#{tareas.nombreTarea}" filterBy="#{tareas.nombreTarea}">
+				                 <f:facet name="header">
+				                    Nombre
+				                 </f:facet>
+				                 <h:outputText value="#{tareas.nombreTarea}" />
+				          </p:column>
+                          
+                          <p:column sortBy="#{tareas.estado}" filterBy="#{tareas.estado}">
+				                 <f:facet name="header">
+				                    Estado
+				                 </f:facet>
+				                 <h:outputText value="#{tareas.estado}" />
+				          </p:column>
+                             
+				          <p:column sortBy="#{tareas.fechaInicioTarea}" filterBy="#{tareas.fechaInicioTarea}">
+				                 <f:facet name="header">
+				                    Fecha inicio
+				                 </f:facet>
+				                 <h:outputText value="#{tareas.fechaInicioTarea}" />
+				          </p:column>
+				          
+				           <p:column sortBy="#{tareas.fechaFinTarea}" filterBy="#{tareas.fechaFinTarea}">
+				                 <f:facet name="header">
+				                    Fecha fin
+				                 </f:facet>
+				                 <h:outputText value="#{tareas.fechaFinTarea}" />
+				          </p:column> 
+				          
+				          <p:column sortBy="#{tareas.horasImputadas}" filterBy="#{tareas.horasImputadas}">
+				                 <f:facet name="header">
+				                    Horas Imputadas
+				                 </f:facet>
+				                 <h:outputText value="#{tareas.horasImputadas}" />
+				          </p:column> 
+				                
+           
+             </p:dataTable>
+             
+             <br/>
+             <br/>
+             
+             <h:outputText value="Numero de horas:  "/>
+             <p:inputText value="#{tareaBean.horasImputadas}"/>
+              
+                   
+              <p:messages id="messages"/> 
+                                                              
+        </p:fieldset>
+        
+              <p:commandButton value="Imputar" actionListener="#{tareaBean.imputarHoras}" 
+                              update="tablaImputar,messages"/> 
+        
+            
+
+    </ui:define>
+
+    </ui:composition>
+
+</html>

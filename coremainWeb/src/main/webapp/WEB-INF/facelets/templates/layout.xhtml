@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		
+		
+		<h:outputStylesheet library="primefaces-aristo" name="theme.css" />
+		  		 
+					
+		<!-- Título que aparecerá en el navegador -->
+		<title>CoremainWeb</title>
+		
+		<!-- 
+		    <style type="text/css">
+                .ui-layout-north {
+                    z-index:20 !important;
+                    overflow:visible !important;;
+                }
+
+                .ui-layout-north .ui-layout-unit-content {
+                    overflow:visible !important;
+                    background-color: #DCDCDC !important
+                }
+                
+                .ui-layout-west .ui-layout-unit-content{
+                    
+                     background-color: #dddddd !important;
+                }
+                
+                .ui-layout-center .ui-layout-unit-content{
+                
+                     background-color: #F5DEB3 !important;   
+                }
+                
+            </style>
+         -->    
+	</h:head>
+	
+	<h:body>
+	
+		<!-- Customización de algunos estilos -->	
+		<!-- FIXME: Hay que cambiar los estilos customizados para: -->
+		<!-- Evitar que el p:inputText se vea mal -->
+		<!-- ¿Se puede cambiar el color del fondo de los picklist? -->
+		<!-- Que en IExplorer las esquinas aparezcan redondeadas -->
+		<!-- Include it in the <h:body> of your template using <h:outputStylesheet>
+		 (it will be auto-relocated to the end of the HTML head, after all PrimeFaces own stylesheets): -->
+		<h:outputStylesheet library="css" name="skin.css" />	
+	
+	
+	
+	<!-- Voy a probar a cambiar la plantilla del layout.xhtml -->
+	<!-- Esto es lo que habia antes: -->
+	 
+	 
+		      <p:layout  fullPage="true">
+		          <p:layoutUnit id="norte" position="north" size="65">  
+		               <ui:include src="/pages/cabecera.xhtml" />                     	  
+                  </p:layoutUnit>
+                  <p:layoutUnit id="oeste" position="west" size="250">                    
+                        <ui:include src="/pages/menuProyecto.xhtml" />                                    
+                  </p:layoutUnit>
+                  <p:layoutUnit id="centro" position="center">
+                      <p:outputPanel id="contenidoCentro">
+                             <h:form>               
+                                    <ui:insert name="content"></ui:insert>
+                             </h:form>                      
+                       </p:outputPanel>    
+                  </p:layoutUnit>
+                   <p:layoutUnit id="sur" position="south" size="55">  
+                       <ui:include src="/pages/footer.xhtml" />
+                   </p:layoutUnit>
+              </p:layout>
+      
+      
+      <!-- Esto es lo que voy a poner ahora: -->
+     
+      
+    <!--  <div id="header">
+           <ui:include src="/pages/cabecera.xhtml" /> 
+      </div>  
+      
+      <br/>
+      
+      <div id="contenedor">
+           <div id="menu">
+               <ui:include src="/pages/menuProyecto.xhtml" />
+           </div>
+           <div id="contenido">
+                <h:form id="contenidoCentro">               
+                    <ui:insert name="content"></ui:insert>
+                </h:form>
+           </div>
+      </div>
+      
+      <br/>
+      
+      <div id="footer">
+          <ui:include src="/pages/footer.xhtml" /> 
+      </div>-->
+        
+	</h:body>
+	
+</html>

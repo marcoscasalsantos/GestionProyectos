@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>	
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags">
+	
+   <ui:composition template="/WEB-INF/facelets/templates/layout.xhtml">
+
+    <ui:define name="content">
+
+        <p:fieldset id="detalleTarea" legend="Detalle de la tarea" style="width:940px">
+         
+          <p:panelGrid id="detalleTareaPanel" columns="2">
+               
+            <h:outputLabel for="nombreTarea" value="Nombre: *"/>
+            <p:focus>
+               <p:inputTextarea id="nombreTarea" value="#{tareaBean.selectedTarea.nombreTarea}" rows="3" cols="20"/> 
+            </p:focus>
+            
+            <h:outputLabel for="descripcion" value="Descripcion:"/>
+            <p:inputTextarea id="descripcion" value="#{tareaBean.selectedTarea.descripcionTarea}" rows="8" cols="35"/>
+            
+            <h:outputLabel for="fechaInicioTarea" value="Fecha de Inicio: *"/> 
+            <p:calendar id="fechaInicioTarea" value="#{tareaBean.selectedTarea.fechaInicioTarea}" showButtonPanel="true"/>
+            
+            <h:outputLabel for="fechaFinTarea" value="Fecha de Fin: *"/> 
+            <p:calendar id="fechaFinTarea" value="#{tareaBean.selectedTarea.fechaFinTarea}" showButtonPanel="true"/>
+            
+            <h:outputLabel for="estadoLabel" value="Estado:" rendered="#{not tareaBean.mostrarEstado}"/>
+            <h:outputText value="#{tareaBean.estado}"
+                          rendered="#{not tareaBean.mostrarEstado}" id="estadoLabel"/>
+            
+            <h:outputLabel for="estado" value="Estado:" rendered="#{tareaBean.mostrarEstado}"/> 
+            <p:selectOneMenu rendered="#{tareaBean.mostrarEstado}" id="estado" value="#{tareaBean.selectedTarea.estado}">  
+                          <!--     valueChangeListener="#{tareaBean.stateChangeListener}"> -->
+                  <f:selectItems value="#{tareaBean.estados}"/> 
+            </p:selectOneMenu>
+            
+            <h:outputLabel for="commandLink" value="Asignado a:" rendered="#{tareaBean.mostrarEstado}"/>
+            <p:dataList value="#{tareaBean.selectedTarea.users}" var="user" type="ordered" rendered="#{tareaBean.mostrarEstado}">
+                     <p:commandLink id="commandLink" value="#{user.fullName}" action="#{userBean.goUserDetail}">
+                         <f:setPropertyActionListener target="#{userBean.selectedUser}" value="#{user}"></f:setPropertyActionListener>
+                     </p:commandLink>
+            </p:dataList>
+             
+         </p:panelGrid>
+             
+             <p:messages id="messages"/>
+
+        </p:fieldset>
+        
+             <p:commandButton value="Modificar" actionListener="#{tareaBean.updateTarea}" update="messages"/>
+
+    </ui:define>
+
+    </ui:composition>
+
+</html>

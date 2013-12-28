@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>	
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"	
+	xmlns:sec="http://www.springframework.org/security/facelets/tags"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions" > 
+		
+	<ui:composition>
+							
+		<!-- COMUNIDADES TABLE -->
+	    <p:dataTable id="comunidadesTable" var="comunidad" value="#{comunidadBean.comunidades}" rowKey="#{comunidad.idComunidad}"
+               selection="#{comunidadBean.selectedComunidad}" selectionMode="single" 
+               paginator="true" rows="10" paginatorPosition="bottom" 
+               resizableColumns="true">
+	    
+	    	<f:facet name="header">
+	    		<h:outputText value="Comunidades" styleClass="ui-widget" style="font-weight: bold"/>
+	    	</f:facet>
+	    
+	        <p:column style="width:100px">
+	        	<f:facet name="header">
+					Código INE
+	            </f:facet>	        
+	            <h:outputText value="#{comunidad.codigoIneComunidad}"/>
+	        </p:column>	    
+	    	    	
+	        <p:column headerText="Nombre" style="width:300px">
+	        	<f:facet name="header">
+					Nombre
+	            </f:facet>		        
+	            <h:outputText value="#{comunidad.nombreComunidad}"/>
+	        </p:column>			    	    
+						 						        
+			<f:facet name="footer" style="text-align:left">  
+				<p:commandButton value="Nuevo" icon="ui-icon-plus" action="#{comunidadBean.goNewComunidad}" ajax="false" style="float:left" />
+		
+				&#160;&#160;&#160;
+												
+				<h:outputText value="#{fn:length(comunidadBean.comunidades)} comunidades en total." styleClass="ui-widget" />								
+				
+				&#160;&#160;&#160;									
+										
+				<h:commandLink style="float:right">
+					<p:graphicImage value="/resources/images/ico_excel.gif" style="vertical-align: bottom" title="Exportar a Excel"/>  
+					<p:dataExporter type="xls" target="comunidadesTable" fileName="Comunidades_España"/>  
+				</h:commandLink>
+					
+				&#160;&#160;&#160;																				
+											
+				<h:commandLink style="float:right">
+					<p:graphicImage value="/resources/images/ico_pdf.gif" style="vertical-align: bottom" title="Exportar a PDF"/> 
+					<p:dataExporter type="pdf" target="comunidadesTable" fileName="Comunidades_España" encoding="ISO8859-1"/>  
+				</h:commandLink>
+											
+			</f:facet>				        
+	        
+	    </p:dataTable>
+  			
+	    <p:contextMenu for="comunidadesTable">
+     			<p:menuitem value="Editar" action="#{comunidadBean.goComunidadDetail}" icon="ui-icon-search" ajax="false"/>
+     			<p:menuitem value="Eliminar" update="comunidadesTable" actionListener="#{comunidadBean.deleteComunidad}" icon="ui-icon-close"/>
+ 		</p:contextMenu>
+	  					    			
+		
+	</ui:composition>
+	
+</html>
+
+

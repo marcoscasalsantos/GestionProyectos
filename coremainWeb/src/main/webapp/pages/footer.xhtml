@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:p="http://primefaces.org/ui">
+	
+	<ui:composition>
+		<h:form id="footer">
+		
+			<h:panelGrid styleClass="centered">
+				<h:graphicImage id="lineaImage" library="images" name="linea.jpg"/>
+			</h:panelGrid>
+			
+			<h:panelGrid columns="2" width="100%">
+		    	
+		    	<h:panelGrid columns="1" width="820">
+			      <h:outputText id="pie1Label" value="#{msg.footer_nota_al_pie1}"
+			  		styleClass="textoGris9" />
+			  		
+				  <h:outputText id="pie2Label" value="#{msg.footer_nota_al_pie2}"		  
+					styleClass="textoGris9" />
+			    </h:panelGrid>
+		 		
+		 		<h:panelGrid>
+		 			<h:outputLink value="mailto:marcos.casal@coremain.com" sytleClass="textoGris9">
+		  				<h:graphicImage id="contactoImage" library="images" name="contacto.gif" alt="contacto"/>
+					</h:outputLink>
+			    </h:panelGrid>
+			    
+			</h:panelGrid>
+	
+		</h:form>
+	</ui:composition>
+</html>						
+

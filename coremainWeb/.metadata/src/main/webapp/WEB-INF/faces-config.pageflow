@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf12858359622580" configfile="/coremainWeb/src/main/webapp/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="pages/error/error.xhtml" x="338" y="178" id="pf12874983794948" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf128749918634919" path="/pages/error/error.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/gestion/menuAyuntamientos.xhtml" x="122" y="584" id="pf128749884792913" referenceLink="//@navigationRule.4/@navigationCase.1/@toViewId|" path="/pages/gestion/menuAyuntamientos.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/gestion/menuEmpresas.xhtml" x="122" y="1375" id="pf128749905805318" referenceLink="//@navigationRule.4/@navigationCase.2/@toViewId|" path="/pages/gestion/menuEmpresas.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="*" x="122" y="2166" id="pf128749918634920" referenceLink="//@navigationRule.15/@fromViewId|" outlinks="pf128749918634919 pf132619630237210 pf13388954765880 pf13388954765881 pf13388954765882 pf13407033443038 pf13414843616161 pf13450217585732 pf13458036162521 pf13463203710670 pf13475315247250 pf13480434483040 pf13481570858750 pf13482252533810 pf13486829912691 pf13487437839610 pf13491977668570 pf13854896558060 pf13874560849610" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/detalleUsuario.xhtml" x="122" y="3103" id="pf13250638162161" referenceLink="//@navigationRule.3/@navigationCase.0/@toViewId|" path="/pages/detalleUsuario.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/error/viewExpired.xhtml" x="338" y="562" id="pf132619630237211" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf132619630237210" path="/pages/error/viewExpired.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/login.xhtml" x="338" y="946" id="pf13388954765883" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" inlinks="pf13388954765880" path="/pages/login.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/user/usuarios.xhtml" x="338" y="1330" id="pf13388954765884" referenceLink="//@navigationRule.5/@fromViewId|" outlinks="pf13388954765885 pf13388954765886" inlinks="pf13388954765881" path="/pages/user/usuarios.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/territory/territorio.xhtml" x="338" y="1714" id="pf13388954765887" referenceLink="//@navigationRule.4/@navigationCase.0/@toViewId|" inlinks="pf13388954765882" path="/pages/territory/territorio.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/user/detalleUsuario.xhtml" x="554" y="1330" id="pf13388954765888" referenceLink="//@navigationRule.6/@fromViewId|" outlinks="pf13407007783470" inlinks="pf13388954765885" path="/pages/user/detalleUsuario.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/user/nuevoUsuario.xhtml" x="554" y="2098" id="pf133889547658810" referenceLink="//@navigationRule.7/@fromViewId|" outlinks="pf13407007783471" inlinks="pf13388954765886" path="/pages/user/nuevoUsuario.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/user/menuPrincipal.xhtml" x="770" y="1330" id="pf13407007783472" referenceLink="//@navigationRule.6/@navigationCase.0/@toViewId|" inlinks="pf13407007783470" path="/pages/user/menuPrincipal.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/menuPrincipal.xhtml" x="770" y="3452" id="pf13407007783473" referenceLink="//@navigationRule.16/@navigationCase.0/@toViewId|" inlinks="pf13407007783471 pf13463203710670" path="/pages/menuPrincipal.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/usuarios/nuevoUsuario.xhtml" x="338" y="2098" id="pf13407033443039" referenceLink="//@navigationRule.8/@navigationCase.0/@toViewId|" inlinks="pf13407033443038" path="/pages/usuarios/nuevoUsuario.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/usuarios/listaUsuarios.xhtml" x="338" y="2482" id="pf13414843616162" referenceLink="//@navigationRule.12/@fromViewId|" outlinks="pf13415614062802 pf13419988169861" inlinks="pf13414843616161" path="/pages/usuarios/listaUsuarios.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/usuarios/detalleUsuario.xhtml" x="554" y="2482" id="pf13415614062803" referenceLink="//@navigationRule.11/@navigationCase.0/@toViewId|" inlinks="pf13415614062802 pf13490012791550" path="/pages/usuarios/detalleUsuario.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/usuarios/gestionUsuario.xhtml" x="554" y="2866" id="pf13419988169862" referenceLink="//@navigationRule.12/@navigationCase.0/@toViewId|" inlinks="pf13419988169861" path="/pages/usuarios/gestionUsuario.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/proyecto/nuevoProyecto.xhtml" x="338" y="2866" id="pf13450217585743" referenceLink="//@navigationRule.13/@navigationCase.0/@toViewId|" inlinks="pf13450217585732" path="/pages/proyecto/nuevoProyecto.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/proyecto/listaProyectos.xhtml" x="338" y="3655" id="pf13458036162542" referenceLink="//@navigationRule.15/@fromViewId|" inlinks="pf13458036162521" path="/pages/proyecto/listaProyectos.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/proyecto/participantes.xhtml" id="pf13475315247251" referenceLink="//@navigationRule.17/@navigationCase.0/@toViewId|" inlinks="pf13475315247250" path="/pages/proyecto/participantes.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/tareas/nuevaTarea.xhtml" id="pf13480434483041" referenceLink="//@navigationRule.18/@navigationCase.0/@toViewId|" inlinks="pf13480434483040" path="/pages/tareas/nuevaTarea.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/tareas/listaTareas.xhtml" id="pf13481570858771" referenceLink="//@navigationRule.19/@navigationCase.0/@toViewId|" inlinks="pf13481570858750" path="/pages/tareas/listaTareas.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/tareas/detalleTarea.xhtml" id="pf13482252533831" referenceLink="//@navigationRule.20/@navigationCase.0/@toViewId|" outlinks="pf13490012791550" inlinks="pf13482252533810" path="/pages/tareas/detalleTarea.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/tareas/asignarTarea.xhtml" id="pf13486829912742" referenceLink="//@navigationRule.21/@navigationCase.0/@toViewId|" inlinks="pf13486829912691" path="/pages/tareas/asignarTarea.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/tareas/imputarHoras.xhtml" id="pf13487437839631" referenceLink="//@navigationRule.22/@navigationCase.0/@toViewId|" inlinks="pf13487437839610" path="/pages/tareas/imputarHoras.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/proyecto/seguimiento.xhtml" id="pf13491977668571" referenceLink="//@navigationRule.23/@navigationCase.0/@toViewId|" inlinks="pf13491977668570" path="/pages/proyecto/seguimiento.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/tareas/tareas.xhtml" id="pf13854896558121" referenceLink="//@navigationRule.24/@navigationCase.0/@toViewId|" inlinks="pf13854896558060" path="/pages/tareas/tareas.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="pages/proyecto/detalleProyecto.xhtml" id="pf13874560849661" referenceLink="//@navigationRule.15/@navigationCase.0/@toViewId|" inlinks="pf13874560849610" path="/pages/proyecto/detalleProyecto.xhtml"/>
+  <links id="pf128749918634919" target="pf12874983794948" source="pf128749918634920" outcome="error"/>
+  <links id="pf132619630237210" target="pf132619630237211" source="pf128749918634920" outcome="viewExpired"/>
+  <links id="pf13388954765880" target="pf13388954765883" source="pf128749918634920" outcome="login"/>
+  <links id="pf13388954765881" target="pf13388954765884" source="pf128749918634920" outcome="usuarios"/>
+  <links id="pf13388954765882" target="pf13388954765887" source="pf128749918634920" outcome="territorio"/>
+  <links id="pf13388954765885" target="pf13388954765888" source="pf13388954765884" outcome="detalleUsuario"/>
+  <links id="pf13388954765886" target="pf133889547658810" source="pf13388954765884" outcome="nuevoUsuario"/>
+  <links id="pf13407007783470" target="pf13407007783472" source="pf13388954765888" outcome="menuPrincipal"/>
+  <links id="pf13407007783471" target="pf13407007783473" source="pf133889547658810" outcome="menuPrincipal"/>
+  <links id="pf13407033443038" target="pf13407033443039" source="pf128749918634920" outcome="newUser" redirect="true"/>
+  <links id="pf13414843616161" target="pf13414843616162" source="pf128749918634920" outcome="listaUsuarios" redirect="true"/>
+  <links id="pf13415614062802" target="pf13415614062803" source="pf13414843616162" outcome="detalleUsuario" redirect="true"/>
+  <links id="pf13419988169861" target="pf13419988169862" source="pf13414843616162" outcome="gestionUsuario" redirect="true"/>
+  <links id="pf13450217585732" target="pf13450217585743" source="pf128749918634920" outcome="nuevoProyecto" redirect="true"/>
+  <links id="pf13458036162521" target="pf13458036162542" source="pf128749918634920" outcome="listaProyectos" redirect="true"/>
+  <links id="pf13463203710670" target="pf13407007783473" source="pf128749918634920" outcome="menuPrincipal" redirect="true"/>
+  <links id="pf13475315247250" target="pf13475315247251" source="pf128749918634920" outcome="participantes" redirect="true"/>
+  <links id="pf13480434483040" target="pf13480434483041" source="pf128749918634920" outcome="nuevaTarea" redirect="true"/>
+  <links id="pf13481570858750" target="pf13481570858771" source="pf128749918634920" outcome="listaTareas" redirect="true"/>
+  <links id="pf13482252533810" target="pf13482252533831" source="pf128749918634920" outcome="detalleTarea" redirect="true"/>
+  <links id="pf13486829912691" target="pf13486829912742" source="pf128749918634920" outcome="asignarTarea" redirect="true"/>
+  <links id="pf13487437839610" target="pf13487437839631" source="pf128749918634920" outcome="imputarHoras" redirect="true"/>
+  <links id="pf13490012791550" target="pf13415614062803" source="pf13482252533831" outcome="detalleUsuario" redirect="true"/>
+  <links id="pf13491977668570" target="pf13491977668571" source="pf128749918634920" outcome="seguimiento" redirect="true"/>
+  <links id="pf13854896558060" target="pf13854896558121" source="pf128749918634920" outcome="tareas" redirect="true"/>
+  <links id="pf13874560849610" target="pf13874560849661" source="pf128749918634920" outcome="detalleProyecto" redirect="true"/>
+</pageflow:Pageflow>

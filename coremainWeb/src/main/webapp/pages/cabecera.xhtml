@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags">
+	
+    <ui:composition>
+       <h:form id="cabeceraForm">
+       
+         <h:panelGrid styleClass="centered">
+				<h:graphicImage id="lineaImage" library="images" name="linea.jpg"/>
+		 </h:panelGrid>			
+		
+		 <h:panelGrid columns="3" columnClasses=",columnAlignLeft,columnAlignRight" style="width:100%">
+			
+				<h:panelGroup>
+					<h:outputText value="#{msg.header_titulo}" styleClass="ui-widget" style="font-size: 18px;"/>
+					&#160;
+					<h:outputText value="v#{system['applicationVersionNumber']}" styleClass="ui-widget" style="font-size: 9px;"/>
+				</h:panelGroup>	
+				
+				<h:panelGroup id="panel">				  
+				     <!-- <h:outputText id="texto" value="#{actualProjectBean.proyectoActual.nombreProyecto}"/> -->
+				      <h:outputText id="texto" value="#{menuBean.opcionSeleccionada}"/> 
+				      
+				      <p:messages id="mensajes"></p:messages>               				         			       				     
+				</h:panelGroup>			
+			
+				<h:panelGroup>
+								 
+				    <h:outputLink id="ayudaLink" rendered="#{loginBean.userLoggedIn}"
+						onclick="window.open('#{request.contextPath}/resources/doc/CoremainWEB-Arquitectura.pdf','myWindow', 'width=500,height=500,toolbar=1,resizable=1');return false;">
+						<h:outputText value="#{msg.header_ayuda}" styleClass="ui-widget"/>
+				    </h:outputLink>
+		
+					&#160;&#160;&#160;
+					
+					
+				    <h:commandLink id="idiomaCastellano" action="#{localeBean.doSetLocaleLanguageGallegoAction}">
+						<h:outputText value="#{msg.header_gallego}" styleClass="ui-widget"/>
+				    </h:commandLink>
+					
+				    <h:outputText value="|" styleClass="ui-widget"/>
+					
+				    <h:commandLink id="idiomaGallego" action="#{localeBean.doSetLocaleLanguageCastellanoAction}">
+		  				<h:outputText value="#{msg.header_castellano}" styleClass="ui-widget"/>
+				    </h:commandLink>					
+			
+					&#160;&#160;&#160;
+			
+				    <h:commandLink id="cerrarButton" rendered="#{loginBean.userLoggedIn}" action="#{loginBean.doCerrarSesionAction}">
+						<h:outputText value="#{msg.header_cerrarSesion}" styleClass="ui-widget"/>
+				    </h:commandLink>
+					
+				</h:panelGroup>
+			
+			</h:panelGrid>
+			
+			<h:panelGrid columns="1" rendered="#{loginBean.userLoggedIn}">
+				<h:panelGroup>					
+					<h:outputText value="#{msg.header_usuario}:" styleClass="ui-widget" style="font-weight: bold"/>
+					&#160;
+					<h:outputText value="#{loginBean.loggedUser.fullName}" styleClass="ui-widget" />
+					&#160;
+					<sec:ifAllGranted roles="ROLE_USER,ROLE_ADMIN">
+						<h:outputText value="(Administrador)" styleClass="ui-widget" />
+					</sec:ifAllGranted>
+					
+				</h:panelGroup>
+			</h:panelGrid>
+			
+			<br/>
+			 	
+       </h:form>
+    </ui:composition>
+
+</html>
